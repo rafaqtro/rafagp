@@ -1,0 +1,29 @@
+Para la autenticación basada en llaves, se genera el par de llaves en la computadora local.
+
+ssh-keygen
+
+Para poner la llave pública en el servidor:
+
+- Nos loguemaos
+
+- Creamos el directorio .shh y el archivo .ssh/authorized_keys:
+  mkdir .ssh
+  touch .ssh/authorized_keys
+
+- Abrir el archivo:
+  nano .ssh/authorized_keys
+
+- Pegamos el contenido de file.pub en authorized_keys
+
+- Cambiamos permisos:
+  chmod 700 .ssh
+  chmod 644 .ssh/authorized_keys
+
+ssh user@ip -p 22 -i ~/.ssh/file
+
+Para forzar la autenticación basada en llaves:
+ nano /etc/ssh/sshd_config
+ PassworAuthentication yes to no
+ service ssh restart 
+
+
